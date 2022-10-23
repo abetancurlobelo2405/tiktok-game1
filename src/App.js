@@ -9,7 +9,7 @@ import superKmUp from "./sounds/superKmUp.mp4";
 import hyperKmUp from "./sounds/hyperKmUp.mp4";
 import universalKmUp from "./sounds/universalKmUp.mp4";
 
-const socket = io.connect("http://localhost:8081");
+const socket = io.connect("https://tiktokgamesbackend.herokuapp.com/");
 function App() {
   const [count, setCount] = useState(1);
   const basicKmAudio = useRef();
@@ -195,6 +195,10 @@ function App() {
       }
     });
 
+    socket.on("tiktokDisconnected", () => {
+      window.localStorage.setItem("savedKm", count);
+    });
+
     socket.on("tiktokConnected", (data) => {
       console.log(data);
     });
@@ -205,6 +209,11 @@ function App() {
       kmDisplayTotal.km = undefined;
     }, 1000);
   }, [kmDisplayTotal]);
+
+  window.addEventListener("beforeunload", function (e) {
+    e.preventDefault();
+    window.localStorage.setItem("savedKm", count);
+  });
 
   return (
     <div className="App">

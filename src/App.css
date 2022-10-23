@@ -187,7 +187,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   position: absolute;
   z-index: 999;
   margin-top: 150px;
-  background-color: #139901;
+  background-color: #097db3;
   border-radius: 4px;
   padding: 5px;
   animation-name: dissapearFront;
@@ -221,8 +221,8 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   top: 0;
   margin: -10px;
   z-index: 990;
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
 }
 
 .repeatGift{
